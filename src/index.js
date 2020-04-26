@@ -1,23 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function MyList() {
+function MyInfo() {
     return (
-        <ul>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>Other</li>
-        </ul>
-    );
+        <div>
+            <h1>Entor Arifi</h1>
+            <p>I am Entor Arifi and I enjoy writing react applications.</p>
+
+            <h4>My favorite languages</h4>
+            <ul>
+                <li>JavaScript</li>
+                <li>Golang</li>
+                <li>Java</li>
+            </ul>
+        </div>
+    )
 }
 
-// JSX
-ReactDOM.render(
-    <MyList />,
-    document.getElementById('root')
-);
-
-// var h1 = document.createElement('h1');
-// h1.innerText = 'Hello';
-// document.getElementById('root').appendChild(h1)
+ReactDOM.render(<MyInfo />, document.getElementById('root'));
