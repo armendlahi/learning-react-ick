@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 
 // JSX
 ReactDOM.render(
-    <div>
-        <h1>Hello</h1>
-        <p>This is my paragraph</p>
-    </div>,
+    <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ul>,
     document.getElementById('root')
 );
 
