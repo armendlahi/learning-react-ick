@@ -1,12 +1,10 @@
 import React from 'react';
 
-const Person = props => {
+const Person = ({ data: { name, avatar, dateOfBirth, email }}) => {
     const style = {
         width: 150,
         height: 150
     };
-
-    const { name, avatar, dateOfBirth, email } = props.data;
 
     return (
         <div className="person">

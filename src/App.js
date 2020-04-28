@@ -3,9 +3,11 @@ import React from 'react';
 import Person from './components/Person';
 
 const App = () => {
+    const myCompany = 'X Company';
+    
     return (
         <div className="container">
-            <h1>HR App - Company Name</h1>
+            <h1>HR App - {myCompany}</h1>
             <Person
                 data={{
                     name: "Richard Green",
