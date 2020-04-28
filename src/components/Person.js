@@ -8,10 +8,10 @@ const Person = props => {
 
     return (
         <div className="person">
-            <img src={props.avatar} alt={props.name} style={style} />
-            <h3>{props.name}</h3>
-            <h4>{props.dateOfBirth}</h4>
-            <h4><a href="mailto:{props.email}">{props.email}</a></h4>
+            <img src={props.data.avatar} alt={props.data.name} style={style} />
+            <h3>{props.data.name}</h3>
+            <h4>{props.data.dateOfBirth}</h4>
+            <h4><a href={`mailto:${props.data.email}`}>{props.data.email}</a></h4>
             <hr />
         </div>
     );
