@@ -1,7 +1,6 @@
-
 import React from 'react';
 
-function Footer() {
+const Footer = () => {
     return <footer>My React App 2020</footer>;
 }
 

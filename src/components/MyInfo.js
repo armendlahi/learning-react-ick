@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MyInfo() {
+const MyInfo = () => {
     return (
         <div>
             <h1>Entor Arifi</h1>
