@@ -4,26 +4,30 @@ const MyInfo = () => {
     const firstName = 'Entor'; 
     const lastName = 'Arifi'; 
 
-    const myStyle = {
-        color: 'green',
-        backgroundColor: 'orange',
-        fontSize: 45,
-        border: '10px dotted black'
+    const date = new Date(2020, 4, 28, 4, 20);
+    const hour = date.getHours();
+
+    let time;
+    // Objects declared as constants can have their properties mutated but they cannot be reasigned.
+    const style = {
+        fontSize: 50,
+        borderBottom: '2px solid orange',
+        display: 'inline',
+        color: 'black'
     };
 
-    return (
-        <div>
-            <h1 style={myStyle}>{`${firstName} ${lastName}`}</h1>
-            <p>I am Entor Arifi and I enjoy writing react applications.</p>
+    if (hour >= 0 && hour < 12 ) {
+        time = 'morning';
+        style.color = 'blue';
+    } else if (hour >= 12 && hour <= 17) {
+        time = 'afternoon';
+        style.color = 'green';
+    } else {
+        time = 'night';
+        style.color = 'red';
+    }
 
-            <h4>My favorite languages</h4>
-            <ul>
-                <li>JavaScript</li>
-                <li>Golang</li>
-                <li>Java</li>
-            </ul>
-        </div>
-    )
+    return <h1 style={style}>Good {time}.</h1>;
 }
 
 export default MyInfo;
