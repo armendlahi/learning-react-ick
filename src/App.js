@@ -1,9 +1,29 @@
 import React from 'react';
 
 import Person from './components/Person';
+import persons from './providers/persons';
 
 const App = () => {
     const myCompany = 'X Company';
+    const numbers = [1, 3, 4, 5, 6, 9];
+    const multiplied = [];
+
+    for (let i = 0; i < numbers.length; i++) {
+        multiplied.push(numbers[i] * 3);
+    }
+
+    console.log(numbers);
+    console.log(multiplied);
+
+    const multipliedMap = numbers.map(e => e * 3);
+
+    console.log(multipliedMap);
+
+    const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+    const filtered = words.filter(e => e.startsWith('e'));
+    console.log(filtered);
+
     
     return (
         <div className="container">
