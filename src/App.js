@@ -8,13 +8,28 @@ class App extends React.Component {
         this.state = {
             number: 0
         }
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
+    handleIncrement() {
         this.setState(prevState => {
             return {
                 number: prevState.number + 1
+            };
+        });
+    }
+
+    handleDecrement() {
+        this.setState(prevState => {
+            return {
+                number: prevState.number - 1
+            };
+        });
+    }
+
+    handleDouble() {
+        this.setState(prevState => {
+            return {
+                number: prevState.number * 2
             };
         });
     }
@@ -23,8 +38,9 @@ class App extends React.Component {
         return (
             <div className="counter">
                 <h1>{this.state.number}</h1>
-                <button onClick={this.handleClick}>Increment</button>
-                <ChildComponent counter={this.state.number} />
+                <button onClick={this.handleIncrement.bind(this)}>Increment</button>
+                <button onClick={this.handleDecrement.bind(this)}>Increment</button>
+                <button onClick={this.handleDouble.bind(this)}>Double</button>
             </div>
         )
     }
