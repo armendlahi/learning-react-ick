@@ -1,4 +1,5 @@
 import React from 'react';
+import randomColor from 'randomcolor';
 
 import ChildComponent from './ChildComponent';
 
@@ -6,41 +7,49 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            number: 0
+            counter: 0,
+            color: 'red'
         }
     }
 
-    handleIncrement() {
+    handleClick() {
         this.setState(prevState => {
             return {
-                number: prevState.number + 1
-            };
+                counter: prevState.counter + 1
+            }
         });
     }
 
-    handleDecrement() {
-        this.setState(prevState => {
-            return {
-                number: prevState.number - 1
-            };
-        });
+    componentDidMount() {
+        // This lifefycle method is used for initializing component data and/or API calls (fetching data from other sources)
+        console.log('Component did mount.');
     }
 
-    handleDouble() {
-        this.setState(prevState => {
-            return {
-                number: prevState.number * 2
-            };
-        });
+    shouldComponentUpdate(nextProps, nextState) {
+        // console.log('Should component udate.');
+        // return nextState.counter % 2 === 0;
+        return true; // default value
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log(prevProps, prevState);
+        if (prevState.counter !== this.state.counter) {
+            this.setState({
+                color: randomColor()
+            });
+        }
     }
 
     render() {
+        console.log('Render');
+
         return (
-            <div className="counter">
-                <h1>{this.state.number}</h1>
-                <button onClick={this.handleIncrement.bind(this)}>Increment</button>
-                <button onClick={this.handleDecrement.bind(this)}>Increment</button>
-                <button onClick={this.handleDouble.bind(this)}>Double</button>
+            <div>
+                <h1 style={{ color: this.state.color }}>{this.state.counter}</h1>
+                <button onClick={this.handleClick.bind(this)}>Change counter</button>
+                {this.state.counter < 2 && (
+                    <ChildComponent counter={this.state.counter} />
+                )}
             </div>
         )
     }
