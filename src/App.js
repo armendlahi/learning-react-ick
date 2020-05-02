@@ -1,16 +1,33 @@
 import React from 'react';
 
-function doSomething(element) {
-    console.log(`${element} clicked`);
-}
+import ChildComponent from './ChildComponent';
 
-function App() {
-    return (
-        <div>
-            <h1 onClick={() => doSomething('h1')}>My header</h1>
-            <p onClick={() => doSomething('p')}>Attachment apartments in delightful by motionless it no. And now she burst sir learn total. Hearing hearted shewing own ask. Solicitude uncommonly use her motionless not collecting age. The properly servants required mistaken outlived bed and. Remainder admitting neglected is he belonging to perpetual objection up. Has widen too you decay begin which asked equal any. </p>
-        </div>
-    )
+class App extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            number: 0
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(prevState => {
+            return {
+                number: prevState.number + 1
+            };
+        });
+    }
+
+    render() {
+        return (
+            <div className="counter">
+                <h1>{this.state.number}</h1>
+                <button onClick={this.handleClick}>Increment</button>
+                <ChildComponent counter={this.state.number} />
+            </div>
+        )
+    }
 }
 
 export default App;

@@ -1,4 +1,13 @@
-.my-header {
-    font-size: 30px;
-    color: blue;
+.counter {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center
+}
+
+.counter h1 {
+    font-size: 100px;
+}
+
+.counter button {
+    font-size: 20px;
 }
