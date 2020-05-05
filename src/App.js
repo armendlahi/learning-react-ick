@@ -1,32 +1,33 @@
 import React from 'react';
-
-import Authentication from './Authentication';
+import axios from 'axios';
 
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            loading: true
+            name: '',
+            email: '',
+            loading: false
         }
     }
 
-
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({ loading: false})
-        }, 1500);
+        // Fetching data from external sources should be performed inside componentDidMount method
+        this.setState({ loading: true });
+        axios
+            .get('https://jsonplaceholder.typicode.com/users/3')
+            .then(result => {
+                console.log(result);
+                this.setState({
+                    name: result.data.name,
+                    email: result.data.email,
+                    loading: false
+                });
+            });
     }
 
     render() {
-        return (
-            <div>
-                <h1>Header</h1>
-                <hr />
-                {this.state.loading ? 'Loading...' : <Authentication username="MyUsername" />}
-                <hr />
-                <h1>Footer</h1>
-            </div>
-        )
+        return this.state.loading ? <p>Loading...</p> : <h1>Hello, {this.state.name} {this.state.email}</h1>;
     }
 }
 
