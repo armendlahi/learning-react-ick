@@ -5,8 +5,7 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            name: '',
-            email: '',
+            users: [],
             loading: false
         }
     }
@@ -15,19 +14,24 @@ class App extends React.Component {
         // Fetching data from external sources should be performed inside componentDidMount method
         this.setState({ loading: true });
         axios
-            .get('https://jsonplaceholder.typicode.com/users/3')
+            .get('https://jsonplaceholder.typicode.com/users')
             .then(result => {
                 console.log(result);
                 this.setState({
-                    name: result.data.name,
-                    email: result.data.email,
+                    users: result.data,
                     loading: false
                 });
             });
     }
 
     render() {
-        return this.state.loading ? <p>Loading...</p> : <h1>Hello, {this.state.name} {this.state.email}</h1>;
+        const users = this.state.users.map(user => <li>{user.id} - {user.name} {user.phone}</li>)
+
+        return (
+            <div>
+                {this.state.loading ? <p>Loading...</p> : <ul>{users}</ul>}
+            </div>
+        )
     }
 }
 
