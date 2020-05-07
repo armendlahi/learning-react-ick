@@ -14,6 +14,7 @@ class App extends React.Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     handleChange(event) {
@@ -24,11 +25,22 @@ class App extends React.Component {
             });
         }
 
+        handleSubmit(event) {
+            event.preventDefault();
+            console.log('asdasd');
+
+            if (this.state.firstName.length < 5) {
+                alert('First name length should be greater than 4.');
+            }
+
+            console.log(this.state);
+        }
+
         render() {
             return (
                 <div>
                     <h1>My Form</h1>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div>
                             <label>First Name: </label>
                             <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
