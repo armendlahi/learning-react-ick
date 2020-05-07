@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import randomColor from 'randomcolor';
 
 const style = {
     fontSize: 40,
@@ -8,32 +9,20 @@ const style = {
 };
 
 const App = () => {
-    // const state = useState(1);
-    // const count = state[0];
-    // const setCount = state[1];
-    const [count, setCount] = useState(1);
-
-    // console.log(myFunc(5));
+    const [count, setCount] = useState(0);
+    const [color, setColor] = useState('#000');
 
     const changeCount = action => {
         setCount(prevState => action === 'increment' ? prevState + 1 : prevState - 1);
-
-        // action === 'increment'
-        // if (action === 'increment') {
-        //     setCount(prevCount => prevCount + 1);
-        // } else if (action === 'decrement') {
-        //     setCount(prevCount => prevCount - 1);
-        // } else {
-        //     throw new Error('Invalid parameter');
-        // }
     }
-    // function increment() {
-    //     setCount(prevCount => prevCount + 1);
-    // }
+
+    useEffect(() => {
+        setColor(randomColor());
+    }, [count]);
 
     return (
         <div style={style}>
-            <h1>{count}</h1>
+            <h1 style={{ color }}>{count}</h1>
             <button onClick={() => changeCount('increment')}>Increment</button>
             <button onClick={() => changeCount('decrement')}>Decrement</button>
         </div>
